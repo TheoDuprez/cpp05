@@ -1,6 +1,6 @@
 # VARIABLE DECLARATION ############################################################################
 
-NAME =			BureaucratFormAction
+NAME =			Intern
 
 CC =			c++
 
@@ -19,6 +19,7 @@ WHITE	= 		\033[0;37m
 
 SRCS =			./srcs/main.cpp \
 				./srcs/Bureaucrat.cpp \
+				./srcs/Intern.cpp \
 				./srcs/AForm.cpp \
 				./srcs/PresidentialPardonForm.cpp \
 				./srcs/RobotomyRequestForm.cpp \
@@ -30,11 +31,11 @@ OBJS =			$(SRCS:.cpp=.o)
 
 all: $(NAME)
 $(NAME): $(OBJS)
-	echo "$(CYAN)Compiling BureaucratFormAction :$(WHITE)"
+	echo "$(CYAN)Compiling Intern :$(WHITE)"
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	echo "$(GREEN)BureaucratFormAction successfully compiled !$(WHITE)"
+	echo "$(GREEN)Intern successfully compiled !$(WHITE)"
 
-./srcs/%.o: ./srcs/%.cpp $(HEADERS)/Bureaucrat.hpp $(HEADERS)/AForm.hpp $(HEADERS)/PresidentialPardonForm.hpp  $(HEADERS)/RobotomyRequestForm.hpp $(HEADERS)/ShruberryCreationForm.hpp
+./srcs/%.o: ./srcs/%.cpp $(HEADERS)/Bureaucrat.hpp $(HEADERS)/Intern.hpp $(HEADERS)/AForm.hpp $(HEADERS)/PresidentialPardonForm.hpp  $(HEADERS)/RobotomyRequestForm.hpp $(HEADERS)/ShruberryCreationForm.hpp
 	$(CC) $(CFLAGS) -I$(HEADERS) -c $< -o $@
 
 clean:
