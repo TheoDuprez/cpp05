@@ -6,12 +6,12 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:39:11 by tduprez           #+#    #+#             */
-/*   Updated: 2023/10/14 17:27:05 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/10/14 18:23:33 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
+#include "../includes/AForm.hpp"
 
 Bureaucrat::Bureaucrat(void): _name("Bureaucrat"), _grade(150)
 {
@@ -79,16 +79,16 @@ void	Bureaucrat::decrementGrade(void)
 	return ;
 }
 
-void	Bureaucrat::signForm(const Form& form) const
+void	Bureaucrat::signForm(const AForm& form) const
 {
 	try
 	{
 		if (form.getSignature() == true)
 			std::cout << this->getName() << " signed " << form.getName() << std::endl;
 		else
-			throw Form::GradeTooLowException();
+			throw AForm::GradeTooLowException();
 	}
-	catch (const Form::GradeTooLowException& e)
+	catch (const AForm::GradeTooLowException& e)
 	{
 		std::cout << this->getName() << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
 	}

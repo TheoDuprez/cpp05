@@ -19,7 +19,7 @@ WHITE	= 		\033[0;37m
 
 SRCS =			./srcs/main.cpp \
 				./srcs/Bureaucrat.cpp \
-				./srcs/Form.cpp \
+				./srcs/AForm.cpp \
 
 OBJS =			$(SRCS:.cpp=.o)
 
@@ -31,7 +31,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	echo "$(GREEN)BureaucratForm successfully compiled !$(WHITE)"
 
-./srcs/%.o: ./srcs/%.cpp $(HEADERS)/Bureaucrat.hpp $(HEADERS)/Form.hpp
+./srcs/%.o: ./srcs/%.cpp $(HEADERS)/Bureaucrat.hpp $(HEADERS)/AForm.hpp
 	$(CC) $(CFLAGS) -I$(HEADERS) -c $< -o $@
 
 clean:

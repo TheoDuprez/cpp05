@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,84 +11,84 @@
 /* ************************************************************************** */
 
 // #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
+#include "../includes/AForm.hpp"
 
-Form::Form(void): _name("Form"), _requireGradeToSign(1), _requireGradeToExecute(15)
+AForm::AForm(void): _name("AForm"), _requireGradeToSign(1), _requireGradeToExecute(15)
 {
-	std::cout << "Form constructor" << std::endl;
+	std::cout << "AForm constructor" << std::endl;
 	return ;
 }
 
-Form::Form(const std::string name, const unsigned int requireGradeToSign, const unsigned int requireGradeToExecute): \
+AForm::AForm(const std::string name, const unsigned int requireGradeToSign, const unsigned int requireGradeToExecute): \
 _name(name), _signature(false), _requireGradeToSign(requireGradeToSign), _requireGradeToExecute(requireGradeToExecute)
 {
-	std::cout << "Form values constructor" << std::endl;
+	std::cout << "AForm values constructor" << std::endl;
 	return ;
 }
 
-Form::Form(const Form& obj): _requireGradeToSign(obj.getRequireGradeToSign()), _requireGradeToExecute(obj.getRequireGradeToExecute())
+AForm::AForm(const AForm& obj): _requireGradeToSign(obj.getRequireGradeToSign()), _requireGradeToExecute(obj.getRequireGradeToExecute())
 {
-	std::cout << "Form copy constructor" << std::endl;
+	std::cout << "AForm copy constructor" << std::endl;
 	*this = obj;
 	return ;
 }
 
-Form&	Form::operator=(const Form& obj)
+AForm&	AForm::operator=(const AForm& obj)
 {
 	if (this != &obj)
 		this->_signature = obj._signature;
 	return *this;
 }
 
-Form::~Form(void)
+AForm::~AForm(void)
 {
-	std::cout << "Form destructor" << std::endl;
+	std::cout << "AForm destructor" << std::endl;
 	return ;
 }
 
-void	Form::beSigned(Bureaucrat& bureaucrat)
+void	AForm::beSigned(Bureaucrat& bureaucrat)
 {
 	if (this->_requireGradeToSign < bureaucrat.getGrade())
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	else
 		this->_signature = true;
 	return ;
 }
 
-unsigned int	Form::getRequireGradeToSign(void) const
+unsigned int	AForm::getRequireGradeToSign(void) const
 {
 	return this->_requireGradeToSign;
 }
 
-unsigned int	Form::getRequireGradeToExecute(void) const
+unsigned int	AForm::getRequireGradeToExecute(void) const
 {
 	return this->_requireGradeToExecute;
 }
 
-const std::string	Form::getName(void) const
+const std::string	AForm::getName(void) const
 {
 	return this->_name;
 }
 
-bool	Form::getSignature(void) const
+bool	AForm::getSignature(void) const
 {
 	return this->_signature;
 }
 
-const char*	Form::GradeTooHighException::what() const throw()
+const char*	AForm::GradeTooHighException::what() const throw()
 {
 	return ("Grade too high");
 }
 
-const char*	Form::GradeTooLowException::what() const throw()
+const char*	AForm::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low");
 }
 
-std::ostream&	operator<<(std::ostream& out, const Form& obj)
+std::ostream&	operator<<(std::ostream& out, const AForm& obj)
 {
 	out << "Name is : " << obj.getName() << std::endl;
-	out << "The form is signed : " << obj.getSignature() << std::endl;
+	out << "The AForm is signed : " << obj.getSignature() << std::endl;
 	out << "Require grade to sign : " << obj.getRequireGradeToSign() << std::endl;
 	out << "Required grade to execute : " << obj.getRequireGradeToExecute();
 	return (out);

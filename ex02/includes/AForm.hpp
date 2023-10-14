@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,7 +17,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		const std::string _name;
@@ -26,11 +26,11 @@ class Form
 		const unsigned int _requireGradeToExecute;
 
 	public:
-		Form(void);
-		Form(const std::string name, const unsigned int requireGradeToSign, const unsigned int requireGradeToExecute);
-		Form(const Form& obj);
-		Form& operator=(const Form& obj);
-		~Form(void);
+		AForm(void);
+		AForm(const std::string name, const unsigned int requireGradeToSign, const unsigned int requireGradeToExecute);
+		AForm(const AForm& obj);
+		AForm& operator=(const AForm& obj);
+		~AForm(void);
 
 		void				beSigned(Bureaucrat& bureaucrat);
 		const std::string	getName(void) const;
@@ -51,4 +51,4 @@ class Form
 		};
 };
 
-std::ostream&	operator<<(std::ostream& out, const Form& obj);
+std::ostream&	operator<<(std::ostream& out, const AForm& obj);

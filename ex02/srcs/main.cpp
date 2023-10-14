@@ -6,38 +6,38 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 14:37:02 by tduprez           #+#    #+#             */
-/*   Updated: 2023/10/14 17:33:39 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/10/14 18:21:51 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
+#include "../includes/AForm.hpp"
 
 int	main(void)
 {
 	Bureaucrat	testBureaucrat("testBureaucrat", 16);
-	Form		testForm("testForm", 1, 15);
+	AForm		testAForm("testAForm", 1, 15);
 
 	std::cout << "------------------------------------------------" << std::endl;
 
-	std::cout << testForm << std::endl;
+	std::cout << testAForm << std::endl;
 
 	std::cout << "------------------------------------------------" << std::endl;
 	
 	try
 	{
-		testForm.beSigned(testBureaucrat);
+		testAForm.beSigned(testBureaucrat);
 	}
-	catch(const Form::GradeTooLowException& e)
+	catch(const AForm::GradeTooLowException& e)
 	{
 		std::cout << e.what() << std::endl;
 	}
 
 	try
 	{
-		testBureaucrat.signForm(testForm);
+		testBureaucrat.signForm(testAForm);
 	}
-	catch (const Form::GradeTooLowException& e)
+	catch (const AForm::GradeTooLowException& e)
 	{
 		std::cout << e.what() << std::endl;
 	}
@@ -49,18 +49,18 @@ int	main(void)
 	
 	try
 	{
-		testForm.beSigned(testBureaucrat);
+		testAForm.beSigned(testBureaucrat);
 	}
-	catch(const Form::GradeTooLowException& e)
+	catch(const AForm::GradeTooLowException& e)
 	{
 		std::cout << e.what() << std::endl;
 	}
 
 	try
 	{
-		testBureaucrat.signForm(testForm);
+		testBureaucrat.signForm(testAForm);
 	}
-	catch (const Form::GradeTooLowException& e)
+	catch (const AForm::GradeTooLowException& e)
 	{
 		std::cout << e.what() << std::endl;
 	}
