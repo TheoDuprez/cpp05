@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
 #include <iostream>
 #include <cstdlib>
@@ -31,3 +32,5 @@ class RobotomyRequestForm : public AForm
 
 		void	execute(Bureaucrat const & executor) const;
 };
+
+#endif

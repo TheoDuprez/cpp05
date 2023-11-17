@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 #include <iostream>
 
@@ -46,3 +47,5 @@ class Bureaucrat
 };
 
 std::ostream&	operator<<(std::ostream& out, const Bureaucrat& obj);
+
+#endif

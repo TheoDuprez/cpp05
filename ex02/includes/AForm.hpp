@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 #include <iostream>
 #include "../includes/Bureaucrat.hpp"
@@ -78,3 +79,5 @@ public:
 };
 
 std::ostream &operator<<(std::ostream &out, const AForm &obj);
+
+#endif

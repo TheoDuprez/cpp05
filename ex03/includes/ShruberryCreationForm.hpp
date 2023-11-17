@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef SHRUBERRYCREATIONFORM_HPP
+# define SHRUBERRYCREATIONFORM_HPP
 
 #include <iostream>
 #include <fstream>
@@ -30,3 +31,5 @@ class ShruberryCreationForm : public AForm
 
 		void	execute(Bureaucrat const & executor) const;
 };
+
+#endif

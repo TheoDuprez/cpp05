@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
 #include <iostream>
 #include "./AForm.hpp"
@@ -36,3 +37,5 @@ class Intern
 				virtual const char* what() const throw();
 		};
 };
+
+#endif
