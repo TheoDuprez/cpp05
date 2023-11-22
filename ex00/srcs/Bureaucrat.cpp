@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:39:11 by tduprez           #+#    #+#             */
-/*   Updated: 2023/10/14 17:13:32 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/11/22 13:17:16 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Bureaucrat::Bureaucrat(void): _name("Bureaucrat"), _grade(150)
 Bureaucrat::Bureaucrat(const std::string name, unsigned int grade): _name(name)
 {
 	std::cout << "Bureaucrat values constructor" << std::endl;
-	if (grade < 1 || (int)grade < 0)
+	if (static_cast<int>(grade) < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();

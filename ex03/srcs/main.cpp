@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 14:37:02 by tduprez           #+#    #+#             */
-/*   Updated: 2023/10/15 00:01:08 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/11/22 17:26:21 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@
 #include "../includes/RobotomyRequestForm.hpp"
 #include "../includes/PresidentialPardonForm.hpp"
 
-// static void	testShruberryCreationForm(Bureaucrat& bureaucrat, ShruberryCreationForm& form);
-// static void testRobotomyRequestForm(Bureaucrat& bureaucrat, RobotomyRequestForm& form);
-static void testPresidentialPardonForm(Bureaucrat& bureaucrat, AForm& form);
+static void testForms(Bureaucrat& bureaucrat, AForm& form);
 
 int	main(void)
 {
 	Intern		slave;
-	Bureaucrat	presidential("Presidential", 1);
-	AForm	*form;
+	Bureaucrat	bureaucrat("bureaucrat", 1);
+	AForm		*form;
 
 	std::cout << "-----------------------------------------" << std::endl;
 	try
@@ -37,7 +35,31 @@ int	main(void)
 		std::cout << e.what() << std::endl;
 	}
 
-	testPresidentialPardonForm(presidential, *form);
+	testForms(bureaucrat, *form);
+
+	std::cout << "-----------------------------------------" << std::endl;
+	try
+	{
+		form = slave.makeForm("Robotomy", "testTarget");
+	}
+	catch (const Intern::BadFormException& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	testForms(bureaucrat, *form);
+
+	std::cout << "-----------------------------------------" << std::endl;
+	try
+	{
+		form = slave.makeForm("Shruberry", "testTarget");
+	}
+	catch (const Intern::BadFormException& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	testForms(bureaucrat, *form);
 
 	std::cout << "-----------------------------------------" << std::endl;
 
@@ -56,7 +78,7 @@ int	main(void)
 	return (0);
 }
 
-static void testPresidentialPardonForm(Bureaucrat& bureaucrat, AForm& form)
+static void testForms(Bureaucrat& bureaucrat, AForm& form)
 {
 	try
 	{
@@ -80,6 +102,23 @@ static void testPresidentialPardonForm(Bureaucrat& bureaucrat, AForm& form)
 	{
 		std::cout << e.what() << std::endl;
 	}
+	catch (const AForm::failRobotomyException& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch (const AForm::fileErrorException& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch (const AForm::GradeTooHighException& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch (const AForm::GradeTooLowException& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	
 	return ;
 }
 

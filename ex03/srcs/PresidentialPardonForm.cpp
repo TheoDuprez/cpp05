@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 22:35:43 by tduprez           #+#    #+#             */
-/*   Updated: 2023/10/14 22:35:55 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/11/22 17:10:57 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string target): AForm(
 	return ;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj): AForm("PresidentialPardonForm", 145, 137)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj): AForm("PresidentialPardonForm", 25, 5)
 {
 	std::cout << "PresidentialPardonForm copy constructor" << std::endl;
 	*this = obj;

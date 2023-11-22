@@ -30,7 +30,7 @@ public:
 	AForm(void);
 	AForm(const std::string name, const unsigned int requireGradeToSign, const unsigned int requireGradeToExecute);
 	AForm(const AForm &obj);
-	AForm &operator=(const AForm &obj);
+	AForm& operator=(const AForm &obj);
 	virtual ~AForm(void);
 
 	void			beSigned(Bureaucrat &bureaucrat);

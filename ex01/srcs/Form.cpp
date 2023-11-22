@@ -6,14 +6,14 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:24:26 by tduprez           #+#    #+#             */
-/*   Updated: 2023/10/14 17:34:52 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/11/22 14:42:58 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include "../includes/Bureaucrat.hpp"
 #include "../includes/Form.hpp"
 
-Form::Form(void): _name("Form"), _requireGradeToSign(1), _requireGradeToExecute(15)
+Form::Form(void): _name("Form"), _signature(false), _requireGradeToSign(1), _requireGradeToExecute(15)
 {
 	std::cout << "Form constructor" << std::endl;
 	return ;
@@ -22,11 +22,15 @@ Form::Form(void): _name("Form"), _requireGradeToSign(1), _requireGradeToExecute(
 Form::Form(const std::string name, const unsigned int requireGradeToSign, const unsigned int requireGradeToExecute): \
 _name(name), _signature(false), _requireGradeToSign(requireGradeToSign), _requireGradeToExecute(requireGradeToExecute)
 {
+	if (static_cast<int>(this->_requireGradeToExecute) > 150 || static_cast<int>(this->_requireGradeToSign) > 150)
+		throw Form::GradeTooLowException();
+	if (static_cast<int>(this->_requireGradeToExecute) < 1 || static_cast<int>(this->_requireGradeToSign) < 1)
+		throw Form::GradeTooHighException();
 	std::cout << "Form values constructor" << std::endl;
 	return ;
 }
 
-Form::Form(const Form& obj): _requireGradeToSign(obj.getRequireGradeToSign()), _requireGradeToExecute(obj.getRequireGradeToExecute())
+Form::Form(const Form& obj): _name(obj.getName()), _requireGradeToSign(obj.getRequireGradeToSign()), _requireGradeToExecute(obj.getRequireGradeToExecute())
 {
 	std::cout << "Form copy constructor" << std::endl;
 	*this = obj;

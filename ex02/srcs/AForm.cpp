@@ -13,7 +13,7 @@
 // #include "../includes/Bureaucrat.hpp"
 #include "../includes/AForm.hpp"
 
-AForm::AForm(void): _name("AForm"), _requireGradeToSign(1), _requireGradeToExecute(15)
+AForm::AForm(void): _name("AForm"), _signature(false), _requireGradeToSign(1), _requireGradeToExecute(15)
 {
 	std::cout << "AForm constructor" << std::endl;
 	return ;
@@ -22,11 +22,15 @@ AForm::AForm(void): _name("AForm"), _requireGradeToSign(1), _requireGradeToExecu
 AForm::AForm(const std::string name, const unsigned int requireGradeToSign, const unsigned int requireGradeToExecute): \
 _name(name), _signature(false), _requireGradeToSign(requireGradeToSign), _requireGradeToExecute(requireGradeToExecute)
 {
+	if (static_cast<int>(this->_requireGradeToExecute) > 150 || static_cast<int>(this->_requireGradeToSign) > 150)
+		throw AForm::GradeTooLowException();
+	if (static_cast<int>(this->_requireGradeToExecute) < 1 || static_cast<int>(this->_requireGradeToSign) < 1)
+		throw AForm::GradeTooHighException();
 	std::cout << "AForm values constructor" << std::endl;
 	return ;
 }
 
-AForm::AForm(const AForm& obj): _requireGradeToSign(obj.getRequireGradeToSign()), _requireGradeToExecute(obj.getRequireGradeToExecute())
+AForm::AForm(const AForm& obj): _name(obj.getName()), _requireGradeToSign(obj.getRequireGradeToSign()), _requireGradeToExecute(obj.getRequireGradeToExecute())
 {
 	std::cout << "AForm copy constructor" << std::endl;
 	*this = obj;
